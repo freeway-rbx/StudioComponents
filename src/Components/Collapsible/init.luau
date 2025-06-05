@@ -8,14 +8,23 @@
 
 	```lua
 	local function MySettingsPage()
-		return React.createElement(StudioComponents.Background, {
-		}, {
+		return React.createElement(StudioComponents.Background, {}, {
 			General = e(StudioComponents.Collapsible, {
 				Title = "General",
+				Icon = { 
+					Image = "path.to.icon",
+					UseThemeColor = false, 
+				},
 				IsBlockStyle = true,
 				LayoutOrder = 1
 			}, {
-				... content here
+				-- general settings here
+
+				-- collapsibles can also be nested to create tree structures
+				AnotherCollapsible = e(StudioComponents.Collapsible, {
+					Title = "Another Collapsible",
+					IsBlockStyle = false, -- for this nested collapsible let's not use the block style
+				}),
 			}),
 
 			Graphics = e(StudioComponents.Collapsible, {
@@ -23,7 +32,7 @@
 				IsBlockStyle = true,
 				LayoutOrder = 2
 			}, {
-				... content here
+				-- graphics settings here
 			}),
 
 			Audio = e(StudioComponents.Collapsible, {
@@ -31,55 +40,7 @@
 				IsBlockStyle = true,
 				LayoutOrder = 3
 			}, {
-				... content here
-			}),
-		})
-	end
-	```
-
-	Collapsibles can also be nested. Pass custom children in at any level or continue to pass `Collapsisble`s as children to create a tree structure (like a file explorer):
-	```lua
-	local function MyPluginExplorer()
-		return e(StudioComponents.Collapsible, {
-			Title = "Tree Level 1",
-			IsBlockStyle = true,
-		}, {
-			Workspace = e(StudioComponents.Collapsible, {
-				Title = "Workspace",
-				Icon = { Image = "path.to.icon" },
-				IsBlockStyle = true,
-			}, {
-				-- fill with Workspace contents here
-			}),
-
-			Players = e(StudioComponents.Collapsible, {
-				Title = "Players",
-				Icon = { Image = "path.to.icon" },
-				IsBlockStyle = true,
-			}, {
-				-- fill with Players here
-			}),
-
-			ReplicatedStorage = e(StudioComponents.Collapsible, {
-				Title = "ReplicatedStorage",
-				Icon = { Image = "path.to.icon" },
-				IsBlockStyle = true,
-			}, {
-				-- A collapsible within a collapsible!
-				Assets = e(StudioComponents.Collapsible, {
-					Title = "Assets",
-				}, {
-					-- fill with Assets contents here
-				})
-			}),
-
-			Lighting = e(StudioComponents.Collapsible, {
-				Title = "Lighting",
-				Icon = { Image = "path.to.icon" },
-				Disabled = true,
-				IsBlockStyle = true,
-			}, {
-				-- fill with Lighting contents here
+				-- audio settings here
 			}),
 		})
 	end
@@ -109,7 +70,7 @@ local useToggleState = require("../Hooks/useToggleState")
 	@field ... CommonProps
 	@field Title string
 	@field IsBlockStyle boolean?
-	@field KeepContentMounted boolean?
+	@field KeepContentMounted boolean? -- if true, uses `Visible` based rendering instead of re-mounting
 	@field Icon IconProps?
 	@field Layout React.Element<UILayout>?
 	@field ContentPadding React.Element<UIPadding>?
