@@ -4,6 +4,7 @@ return {
 	Background = require("./Components/Background"),
 	Button = require("./Components/Button"),
 	Checkbox = require("./Components/Checkbox"),
+	Collapsible = require("./Components/Collapsible"),
 	ColorPicker = require("./Components/ColorPicker"),
 	DatePicker = require("./Components/DatePicker"),
 	Dropdown = require("./Components/Dropdown"),
