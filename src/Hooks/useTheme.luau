@@ -26,7 +26,7 @@ local React = require("@pkg/@jsdotlua/react")
 
 local ThemeContext = require("../Contexts/ThemeContext")
 
-local function useTheme()
+local function useTheme(): StudioTheme
 	local theme = React.useContext(ThemeContext)
 	local studioTheme, setStudioTheme = React.useState(Studio.Theme)
 
