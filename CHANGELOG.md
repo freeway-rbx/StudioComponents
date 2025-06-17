@@ -1,6 +1,10 @@
 # Changelog
 
-## Unreleased
+## 1.4.0
+- Components: `Collapsible` (for containing content in an expandable section)
+- Hooks: `useToggleState`
+
+## 1.3.0
 - Added an optional `DisplayTitle` prop to `TabContainer` children tabs to allow displaying custom text on tabs
 
 ## 1.2.0
